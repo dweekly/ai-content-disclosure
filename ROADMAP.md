@@ -7,9 +7,8 @@ Stack-ranked priorities for the AI Content Disclosure proposal.
 - ~~**File WICG Proposals issue**~~ — Done:
   [WICG/proposals#261](https://github.com/WICG/proposals/issues/261)
 
-- **Comment on WHATWG HTML #9479** — Reference this proposal as the
-  element-level solution that thread's commenters requested. Position as
-  complementary, not competing.
+- ~~**Comment on WHATWG HTML #9479**~~ — Done: commented linking to the
+  explainer as the element-level solution requested by thread participants.
 
 - **Request browser standards positions** — File standards position requests
   with [Chromium](https://chromestatus.com),
