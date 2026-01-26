@@ -7,7 +7,7 @@
 ## Participate
 
 - [GitHub Issues](https://github.com/dweekly/ai-content-disclosure/issues)
-- [WICG Proposals Issue](https://github.com/WICG/proposals/issues/) *(link TBD)*
+- [WICG Proposals Issue #261](https://github.com/WICG/proposals/issues/261)
 
 ## Table of Contents
 

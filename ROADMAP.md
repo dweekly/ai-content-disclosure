@@ -4,9 +4,8 @@ Stack-ranked priorities for the AI Content Disclosure proposal.
 
 ---
 
-- **File WICG Proposals issue** — Submit a ~300-word proposal to
-  [WICG/proposals](https://github.com/WICG/proposals/issues) linking to
-  this explainer. This is the entry point for incubation.
+- ~~**File WICG Proposals issue**~~ — Done:
+  [WICG/proposals#261](https://github.com/WICG/proposals/issues/261)
 
 - **Comment on WHATWG HTML #9479** — Reference this proposal as the
   element-level solution that thread's commenters requested. Position as
