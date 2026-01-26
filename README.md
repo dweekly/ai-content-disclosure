@@ -36,7 +36,7 @@ involvement — from light AI-assisted editing to fully autonomous generation.
 There is currently no standard HTML mechanism for authors to disclose AI
 involvement at element-level granularity within a page.
 
-This explainer proposes an `aidisclosure` HTML attribute and a companion
+This explainer proposes an `ai-disclosure` HTML attribute and a companion
 `<meta name="ai-disclosure">` tag, enabling authors to declare the degree
 of AI involvement in any section of a web page.
 
@@ -111,16 +111,16 @@ inspect element-level attributes for detail.
 
 ### Element-Level Declaration (HTML Attribute)
 
-An `aidisclosure` global attribute on any HTML element:
+An `ai-disclosure` global attribute on any HTML element:
 
 ```html
 <article>
-  <section aidisclosure="none">
+  <section ai-disclosure="none">
     <h2>Six-Month Investigation: City Budget Shortfall</h2>
     <p>Our reporters spent six months reviewing financial records...</p>
   </section>
 
-  <aside aidisclosure="ai-generated" aimodel="gpt-4o" aiprovider="OpenAI">
+  <aside ai-disclosure="ai-generated" ai-model="gpt-4o" ai-provider="OpenAI">
     <h3>AI Summary</h3>
     <p>The investigation found a $4.2M discrepancy in the city's
     infrastructure fund, attributed to misclassified expenditures...</p>
@@ -144,9 +144,9 @@ Source Type vocabulary:
 
 | Attribute | Purpose | Example |
 |-----------|---------|---------|
-| `aimodel` | Model identifier | `"claude-3.5-sonnet"` |
-| `aiprovider` | Provider name | `"Anthropic"` |
-| `aiprompturl` | URL to prompt/methodology documentation | `"/ai-methodology#summary"` |
+| `ai-model` | Model identifier | `"claude-3.5-sonnet"` |
+| `ai-provider` | Provider name | `"Anthropic"` |
+| `ai-prompt-url` | URL to prompt/methodology documentation | `"/ai-methodology#summary"` |
 
 ### Schema.org Integration (JSON-LD)
 
@@ -196,12 +196,12 @@ and an AI-generated summary:
 ```html
 <meta name="ai-disclosure" content="mixed">
 <!-- ... -->
-<article aidisclosure="none">
+<article ai-disclosure="none">
   <h1>Exclusive: City Budget Shortfall</h1>
   <p>After six months of records review...</p>
 </article>
 
-<aside aidisclosure="ai-generated" aimodel="gpt-4o" aiprovider="OpenAI">
+<aside ai-disclosure="ai-generated" ai-model="gpt-4o" ai-provider="OpenAI">
   <h3>Key Takeaways (AI-Generated)</h3>
   <ul><li>$4.2M discrepancy found...</li></ul>
 </aside>
@@ -215,8 +215,8 @@ improvements:
 ```html
 <meta name="ai-disclosure" content="ai-assisted">
 <!-- ... -->
-<article aidisclosure="ai-assisted" aimodel="claude-3.5-sonnet"
-         aiprovider="Anthropic">
+<article ai-disclosure="ai-assisted" ai-model="claude-3.5-sonnet"
+         ai-provider="Anthropic">
   <h1>My Trip to Kyoto</h1>
   <p>The bamboo grove felt otherworldly at dawn...</p>
 </article>
@@ -230,8 +230,8 @@ oversight:
 ```html
 <meta name="ai-disclosure" content="autonomous">
 <!-- ... -->
-<div aidisclosure="autonomous" aimodel="weather-llm-v2"
-     aiprovider="WeatherCorp">
+<div ai-disclosure="autonomous" ai-model="weather-llm-v2"
+     ai-provider="WeatherCorp">
   <h2>San Francisco Bay Area Forecast</h2>
   <p>Expect fog clearing by noon with highs near 62°F...</p>
 </div>
@@ -244,22 +244,22 @@ A literary journal positively asserts that no AI was used:
 ```html
 <meta name="ai-disclosure" content="none">
 <!-- ... -->
-<article aidisclosure="none">
+<article ai-disclosure="none">
   <h1>The Weight of Feathers</h1>
   <p>She found the letter tucked inside a volume of Neruda...</p>
 </article>
 ```
 
-Note: `aidisclosure="none"` is a positive assertion. The *absence* of the
+Note: `ai-disclosure="none"` is a positive assertion. The *absence* of the
 attribute means "unknown," not "none."
 
 ## Detailed Design
 
 ### Inheritance
 
-- Element-level `aidisclosure` attributes override the page-level
+- Element-level `ai-disclosure` attributes override the page-level
   `<meta name="ai-disclosure">` tag
-- Children inherit their nearest ancestor's `aidisclosure` value unless
+- Children inherit their nearest ancestor's `ai-disclosure` value unless
   they specify their own
 - Absence of the attribute means **unknown** (not "none") — this is an
   important distinction that avoids false negative assertions
@@ -270,7 +270,7 @@ attribute means "unknown," not "none."
 |-------|-----------|-------------|
 | HTTP | `AI-Disclosure` response header | Entire response |
 | HTML page | `<meta name="ai-disclosure">` | Entire document |
-| HTML element | `aidisclosure` attribute | Any element |
+| HTML element | `ai-disclosure` attribute | Any element |
 
 These are complementary. A CDN or reverse proxy can set the HTTP header;
 a CMS can set the meta tag; an author or AI tool can set element-level
@@ -278,7 +278,7 @@ attributes. None supersedes the others.
 
 ### Vocabulary Alignment with IPTC
 
-| `aidisclosure` value | IPTC Digital Source Type URI |
+| `ai-disclosure` value | IPTC Digital Source Type URI |
 |---------------------|----------------------------|
 | `none` | `http://cv.iptc.org/newscodes/digitalsourcetype/digitalCapture` |
 | `ai-assisted` | `http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia` |
@@ -341,14 +341,12 @@ competing.
 Using `data-ai-disclosure` instead of a dedicated attribute was considered.
 Trade-off: `data-*` attributes have no semantic meaning to browsers or
 assistive technology. A dedicated attribute signals intent for future browser
-integration (e.g., address bar indicators, accessibility announcements) and
-is consistent with how other proposals (like `containertiming`) have
-proceeded.
+integration (e.g., address bar indicators, accessibility announcements).
 
 ### 5. RDFa / Microdata Only
 
 Too verbose for common cases. RDFa requires namespace declarations and
-multi-attribute markup for simple assertions. The `aidisclosure` attribute
+multi-attribute markup for simple assertions. The `ai-disclosure` attribute
 provides a lightweight default; RDFa or JSON-LD can supplement it for richer
 structured data needs.
 
@@ -364,7 +362,7 @@ structured data needs.
   protection. For verified provenance, pair with C2PA.
 - **Model/provider metadata is optional** to avoid requiring disclosure of
   trade secrets or proprietary tooling.
-- **Prompt text is not embedded in HTML.** The optional `aiprompturl`
+- **Prompt text is not embedded in HTML.** The optional `ai-prompt-url`
   attribute links to an external resource, giving authors control over what
   they disclose and when they revoke access.
 - **The voluntary nature means it cannot be relied upon for security
@@ -375,7 +373,7 @@ structured data needs.
 
 - Browsers and screen readers could optionally announce AI disclosure to
   users (e.g., "AI-generated content follows")
-- The `aidisclosure` attribute should be exposed via the
+- The `ai-disclosure` attribute should be exposed via the
   [Accessibility Object Model](https://wicg.github.io/aom/)
 - No change to existing content rendering — the attribute is purely
   informational
@@ -388,7 +386,7 @@ structured data needs.
   are English-language tokens intended for machine consumption, not display
 - Human-readable presentation of disclosure status is a User Agent
   responsibility and can be localized
-- The `aiprompturl` attribute can link to localized methodology pages
+- The `ai-prompt-url` attribute can link to localized methodology pages
 
 ## FAQ / Common Objections
 

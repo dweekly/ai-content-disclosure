@@ -36,7 +36,7 @@ Stack-ranked priorities for the AI Content Disclosure proposal.
   architectural feedback.
 
 - **Build a polyfill / demo** — Create a small JavaScript library and browser
-  extension that surfaces `aidisclosure` attributes visually, demonstrating
+  extension that surfaces `ai-disclosure` attributes visually, demonstrating
   the user experience without browser-native support.
 
 - **Engage regulatory stakeholders** — Position this standard as a technical
