@@ -11,6 +11,11 @@
     Schema.org structured data for search engine discoverability.
     This supplements the HTML attributes with machine-readable
     structured data that search engines can index.
+
+    The simplest form is just: "aiDisclosure": "ai-assisted"
+    The expanded form below adds optional metadata. All fields
+    except "level" are strictly optional — publishers may have
+    legitimate reasons not to disclose specific tools or providers.
   -->
   <script type="application/ld+json">
   {
@@ -29,11 +34,9 @@
       "url": "https://example.com"
     },
     "aiDisclosure": {
-      "@type": "AIDisclosure",
       "level": "ai-assisted",
-      "tool": "Claude 3.5 Sonnet",
-      "provider": "Anthropic",
-      "description": "AI used for copy editing, fact-checking assistance, and data visualization. All reporting, interviews, and analysis are human-authored."
+      "description": "AI used for copy editing, fact-checking assistance, and data visualization. All reporting, interviews, and analysis are human-authored.",
+      "methodologyUrl": "https://example.com/ai-methodology"
     }
   }
   </script>

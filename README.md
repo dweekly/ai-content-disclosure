@@ -151,7 +151,21 @@ Source Type vocabulary:
 ### Schema.org Integration (JSON-LD)
 
 For search engine discoverability, the same information can be expressed as
-structured data:
+structured data. The simplest form is just the level string:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "Investigation: City Budget Shortfall",
+  "author": { "@type": "Person", "name": "Jane Doe" },
+  "aiDisclosure": "ai-assisted"
+}
+```
+
+An expanded form supports optional metadata. All fields except `level` are
+strictly optional — publishers may have legitimate reasons not to disclose
+specific tools or providers:
 
 ```json
 {
@@ -160,17 +174,17 @@ structured data:
   "headline": "Investigation: City Budget Shortfall",
   "author": { "@type": "Person", "name": "Jane Doe" },
   "aiDisclosure": {
-    "@type": "AIDisclosure",
     "level": "ai-assisted",
     "tool": "Claude 3.5 Sonnet",
     "provider": "Anthropic",
-    "description": "AI used for copy editing and fact-checking assistance"
+    "description": "AI used for copy editing and fact-checking assistance",
+    "methodologyUrl": "https://example.com/ai-methodology"
   }
 }
 ```
 
-*(A separate Schema.org proposal for the `aiDisclosure` property on
-`CreativeWork` would accompany this effort.)*
+*(Proposed as a comment on
+[schemaorg/schemaorg#3391](https://github.com/schemaorg/schemaorg/issues/3391).)*
 
 ## Key Scenarios
 

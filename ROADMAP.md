@@ -20,10 +20,9 @@ Stack-ranked priorities for the AI Content Disclosure proposal.
   [W3C AI & the Web CG](https://www.w3.org/community/ai-web/) for alignment
   with their recommendations on content labeling.
 
-- **File Schema.org proposal** — Submit a proposal to
-  [schemaorg/schemaorg](https://github.com/schemaorg/schemaorg) for an
-  `aiDisclosure` property on `CreativeWork`, with values aligned to this
-  specification.
+- ~~**File Schema.org proposal**~~ — Done: proposed `aiDisclosure` property
+  on `CreativeWork` as a comment on
+  [schemaorg/schemaorg#3391](https://github.com/schemaorg/schemaorg/issues/3391).
 
 - **Connect with IPTC** — Verify vocabulary alignment with IPTC Digital
   Source Type maintainers. Ensure the mapping table is accurate and
