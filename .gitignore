@@ -12,5 +12,8 @@
 # Claude
 .claude/
 
+# Drafts
+drafts/
+
 # Original planning document (superseded by README.md)
 plan.txt

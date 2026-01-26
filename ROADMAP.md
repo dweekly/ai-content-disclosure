@@ -15,9 +15,8 @@ Stack-ranked priorities for the AI Content Disclosure proposal.
   - [mozilla/standards-positions#1344](https://github.com/mozilla/standards-positions/issues/1344)
   - [WebKit/standards-positions#605](https://github.com/WebKit/standards-positions/issues/605)
 
-- **Engage W3C AI & the Web Community Group** — Present the proposal to the
-  [W3C AI & the Web CG](https://www.w3.org/community/ai-web/) for alignment
-  with their recommendations on content labeling.
+- ~~**Engage W3C AI & the Web Interest Group**~~ — Done: posted to
+  `public-webai@w3.org` mailing list introducing the proposal.
 
 - ~~**File Schema.org proposal**~~ — Done: proposed `aiDisclosure` property
   on `CreativeWork` as a comment on
