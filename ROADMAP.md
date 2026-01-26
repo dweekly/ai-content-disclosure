@@ -1,0 +1,47 @@
+# Roadmap
+
+Stack-ranked priorities for the AI Content Disclosure proposal.
+
+---
+
+- **File WICG Proposals issue** — Submit a ~300-word proposal to
+  [WICG/proposals](https://github.com/WICG/proposals/issues) linking to
+  this explainer. This is the entry point for incubation.
+
+- **Comment on WHATWG HTML #9479** — Reference this proposal as the
+  element-level solution that thread's commenters requested. Position as
+  complementary, not competing.
+
+- **Request browser standards positions** — File standards position requests
+  with [Chromium](https://chromestatus.com),
+  [Mozilla](https://github.com/mozilla/standards-positions/issues), and
+  [WebKit](https://github.com/WebKit/standards-positions/issues). Getting at
+  least one "worth prototyping" signal is critical for WICG incubation.
+
+- **Engage W3C AI & the Web Community Group** — Present the proposal to the
+  [W3C AI & the Web CG](https://www.w3.org/community/ai-web/) for alignment
+  with their recommendations on content labeling.
+
+- **File Schema.org proposal** — Submit a proposal to
+  [schemaorg/schemaorg](https://github.com/schemaorg/schemaorg) for an
+  `aiDisclosure` property on `CreativeWork`, with values aligned to this
+  specification.
+
+- **Connect with IPTC** — Verify vocabulary alignment with IPTC Digital
+  Source Type maintainers. Ensure the mapping table is accurate and
+  future-compatible.
+
+- **Connect with C2PA working group** — Discuss how HTML-level disclosure
+  could be cryptographically bound to C2PA manifests for verified provenance.
+
+- **Request W3C TAG review** — Once WICG incubation is underway, request a
+  [TAG review](https://github.com/w3ctag/design-reviews/issues) for
+  architectural feedback.
+
+- **Build a polyfill / demo** — Create a small JavaScript library and browser
+  extension that surfaces `aidisclosure` attributes visually, demonstrating
+  the user experience without browser-native support.
+
+- **Engage regulatory stakeholders** — Position this standard as a technical
+  mechanism for EU AI Act Article 50 compliance. Connect with the EU Code of
+  Practice on AI-Generated Content working group.

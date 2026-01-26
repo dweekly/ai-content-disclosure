@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic AI Disclosure — Page-Level Meta Tag</title>
+
+  <!--
+    Page-level AI disclosure using the meta tag.
+    This declares the entire page's disclosure status.
+  -->
+  <meta name="ai-disclosure" content="ai-assisted">
+</head>
+<body>
+
+  <header>
+    <h1>My Trip to Kyoto</h1>
+    <p>By Alex Chen &middot; January 2026</p>
+  </header>
+
+  <!--
+    The entire article was human-written and then refined with an LLM
+    for grammar and style. The page-level meta tag covers it.
+  -->
+  <article aidisclosure="ai-assisted" aimodel="claude-3.5-sonnet"
+           aiprovider="Anthropic">
+    <p>The bamboo grove at Arashiyama felt otherworldly at dawn. Thin shafts
+    of light cut through the towering stalks, and the only sound was the
+    creak of bamboo swaying in the wind.</p>
+
+    <p>I had arrived in Kyoto the previous evening, stepping off the
+    Shinkansen into a city that seemed to exist in two centuries at once.
+    Glass-fronted convenience stores sat beneath wooden machiya townhouses,
+    their latticed facades unchanged for generations.</p>
+
+    <p>The highlight was Fushimi Inari. Thousands of vermillion torii gates
+    march up Mount Inari in a seemingly endless corridor. At the summit,
+    the city spread below in a grid of grey and green, and I understood why
+    pilgrims had been climbing this path for twelve centuries.</p>
+  </article>
+
+  <footer>
+    <p><small>This post was written by a human author and refined using
+    AI for grammar and style.</small></p>
+  </footer>
+
+</body>
+</html>

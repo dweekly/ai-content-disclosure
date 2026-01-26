@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+._*
+
+# Editor files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Claude
+.claude/
+
+# Original planning document (superseded by README.md)
+plan.txt
