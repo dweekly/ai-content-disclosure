@@ -10,9 +10,8 @@ Stack-ranked priorities for the AI Content Disclosure proposal.
 - ~~**Comment on WHATWG HTML #9479**~~ — Done: commented linking to the
   explainer as the element-level solution requested by thread participants.
 
-- **Request browser standards positions** — Mozilla and WebKit filed; Chromium
-  (via [chromestatus.com](https://chromestatus.com)) still needs a feature
-  entry filed through the web UI.
+- ~~**Request browser standards positions**~~ — Done:
+  - [ChromeStatus](https://chromestatus.com/feature/5078123181899776)
   - [mozilla/standards-positions#1344](https://github.com/mozilla/standards-positions/issues/1344)
   - [WebKit/standards-positions#605](https://github.com/WebKit/standards-positions/issues/605)
 

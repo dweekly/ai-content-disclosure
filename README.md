@@ -430,7 +430,7 @@ modern content workflows and remains meaningful as AI tools become ubiquitous.
 
 | Engine | Status | Link |
 |--------|--------|------|
-| Chromium | Pending | — |
+| Chromium | Feature Entry Filed | [ChromeStatus](https://chromestatus.com/feature/5078123181899776) |
 | Gecko (Mozilla) | Position Requested | [mozilla/standards-positions#1344](https://github.com/mozilla/standards-positions/issues/1344) |
 | WebKit | Position Requested | [WebKit/standards-positions#605](https://github.com/WebKit/standards-positions/issues/605) |
 
