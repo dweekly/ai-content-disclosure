@@ -24,6 +24,8 @@
 - [Accessibility Considerations](#accessibility-considerations)
 - [Internationalization Considerations](#internationalization-considerations)
 - [FAQ / Common Objections](#faq--common-objections)
+- [U.S. State Legislative Tracker (Text/HTML Focus)](#us-state-legislative-tracker-texthtml-focus)
+- [Legislative Gap Analysis](#legislative-gap-analysis)
 - [Stakeholder Feedback](#stakeholder-feedback)
 - [References](#references)
 
@@ -426,6 +428,44 @@ That is exactly why granularity matters. Binary "AI/not-AI" is already
 inadequate. The spectrum from `none` to `autonomous` reflects the reality of
 modern content workflows and remains meaningful as AI tools become ubiquitous.
 
+## U.S. State Legislative Tracker (Text/HTML Focus)
+
+*Last updated: 2026-02-06. Scope is intentionally limited to enacted and
+pending state laws that materially affect disclosure for AI-generated text,
+HTML content, or conversational web interactions. This is not legal advice.*
+
+### Enacted and Pending (High Relevance)
+
+| Jurisdiction | Bill / Law | Status (as of 2026-02-06) | Text/HTML-Relevant Requirement | Intersection with this proposal |
+|--------------|------------|---------------------------|--------------------------------|---------------------------------|
+| New York | S3008C (Part U, GBL Article 47) | **Enacted** (signed 2025-05-09; effective 180 days after enactment) | AI companion systems must give clear/conspicuous notice that user is not communicating with a human at interaction start (no more than once per day) and at least every 3 hours for continuing interactions. | Strong overlap on disclosure intent; adds runtime UX cadence requirements beyond static HTML metadata. |
+| New York | S6748 | **Pending** (in Senate Consumer Protection) | Would require print/electronic publications to conspicuously mark page/webpage content created wholly or partly with generative AI. | Strong overlap for publication text/web content labeling; suggests need for mapping from machine-readable metadata to visible labels. |
+| New York | S8874 | **Pending** (in Senate Internet and Technology) | Would require point-of-interaction AI disclosure, plain-English explanation of AI role, and human-assistance instructions (if applicable). | Overlaps on disclosure presence; introduces "human handoff" requirement outside current attribute set. |
+| Utah | SB226 + SB332 (amending/replacing SB149 regime) | **Enacted** (SB226 signed 2025-03-27; SB332 signed 2025-03-25) | Requires disclosures in consumer interactions when asked, plus stronger disclosure requirements in high-risk regulated-service interactions. | Overlap for interactive AI disclosure; legal trigger can depend on interaction type and profession, not only HTML content authorship. |
+| California | BPC §17941 (Bots), as amended over time | **Enacted** | Prohibits deceptive bot interactions in online commercial/election contexts unless bot identity is clearly disclosed. | Partial overlap; legal focus is anti-deception and bot identity in specific contexts, not general AI-content provenance. |
+| California | AB3030 (Health & Safety Code §1339.75 et seq.) | **Enacted** (Chapter 848, 2024) | AI-generated patient communications must include a disclaimer and human-contact instructions, including in continuous online interactions. | Sector-specific overlap; disclosure wording/placement and human escalation requirements exceed current spec scope. |
+| California | SB243 (Companion chatbots) | **Enacted** (Chapter 677, 2025) | Requires clear notice when user could believe they are interacting with a human, plus recurring disclosures for minors in continuing interactions. | Similar to NY Part U pattern; runtime interaction obligations exceed static element-level metadata. |
+| Colorado | SB24-205, as amended by SB25B-004 | **Enacted** (effective-date changes passed in 2025 special session) | Requires consumer disclosure when interacting with AI systems; broader high-risk AI obligations phased to 2026. | Overlap for machine-readable disclosure signal; compliance also depends on risk-management and enforcement frameworks beyond markup. |
+
+### Adjacent (Lower Relevance for Text/HTML Disclosure)
+
+| Jurisdiction | Bill / Law | Status | Why adjacent |
+|--------------|------------|--------|--------------|
+| California | SB942 + AB853 (California AI Transparency Act changes) | **Enacted** | Primarily focuses on media provenance/detection/disclosures for image/video/audio ecosystems and platform handling, not element-level HTML text labeling. |
+
+## Legislative Gap Analysis
+
+### Gap Matrix
+
+| Gap | What laws require or trend toward | Implication for this proposal | Primary owner |
+|-----|-----------------------------------|-------------------------------|---------------|
+| Human-visible disclosure | "Clear and conspicuous" notice to readers/users (not just machine-readable metadata) | `ai-disclosure` alone is insufficient for some statutes; needs explicit bridging guidance | Spec + publisher + UA |
+| Interaction timing/cadence | Notices at start of interaction and periodically during ongoing chat | Static HTML attribute cannot express temporal cadence by itself | Browser/app/runtime layer |
+| Human escalation/handoff | Instructions for contacting a human in some sectors and proposals | Outside current vocabulary (`ai-model`, `ai-provider`, etc.) | Application policy / sector regulation |
+| Context-triggered duties | Different rules for healthcare, minors, elections, commerce, regulated occupations | A single generic content-provenance attribute cannot encode all legal contexts | Out-of-scope for base spec |
+| Enforcement/audit duties | Risk assessments, logging, AG notifications, civil penalties | Not representable as HTML-only metadata | Organizational compliance layer |
+| Non-text provenance | Watermarks/latent metadata/provenance in audio-video-image pipelines | Already complementary with C2PA/IPTC layer | Keep out-of-scope for this HTML text proposal |
+
 ## Stakeholder Feedback
 
 | Engine | Status | Link |
@@ -447,3 +487,16 @@ modern content workflows and remains meaningful as AI tools become ubiquitous.
 9. [EU AI Act — Regulation (EU) 2024/1689, Article 50](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
 10. [EU Code of Practice on Transparency of AI-Generated Content (draft)](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content)
 11. [Bloomberg Container Timing Explainer](https://github.com/nicolo-ribaudo/container-timing) (structural model for this proposal)
+12. [New York S3008C (2025) — budget bill including AI companion model disclosure requirements (Part U)](https://www.nysenate.gov/legislation/bills/2025/S3008/amendment/C)
+13. [New York S6748 (2025-2026) — publication AI-use disclosure proposal](https://www.nysenate.gov/legislation/bills/2025/S6748)
+14. [New York S8874 (2025-2026) — customer-service AI disclosure proposal](https://www.nysenate.gov/legislation/bills/2025/S8874)
+15. [Utah SB149 (2024) — Artificial Intelligence Amendments (historical baseline)](https://le.utah.gov/~2024/bills/static/SB0149.html)
+16. [Utah SB226 (2025) — Artificial Intelligence Consumer Protection Amendments](https://le.utah.gov/Session/2025/bills/enrolled/SB0226.pdf)
+17. [Utah SB332 (2025) — Artificial Intelligence Revisions](https://le.utah.gov/Session/2025/bills/enrolled/SB0332.pdf)
+18. [California BPC §17941 — Bots: disclosure](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=17941.&lawCode=BPC)
+19. [California AB3030 (2023-2024) — health care AI communication disclaimers](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202320240AB3030)
+20. [California SB243 (2025-2026) — companion chatbot disclosure requirements](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB243)
+21. [California SB942 (2023-2024) — California AI Transparency Act](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202320240SB942)
+22. [California AB853 (2025-2026) — amendments to California AI Transparency Act](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB853)
+23. [Colorado SB24-205 — consumer protections in interactions with AI systems](https://leg.colorado.gov/bills/sb24-205)
+24. [Colorado SB25B-004 — effective date changes tied to SB24-205 implementation](https://leg.colorado.gov/bills/sb25b-004)
