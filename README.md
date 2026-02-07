@@ -466,51 +466,6 @@ HTML content, or conversational web interactions. This is not legal advice.*
 | Enforcement/audit duties | Risk assessments, logging, AG notifications, civil penalties | Not representable as HTML-only metadata | Organizational compliance layer |
 | Non-text provenance | Watermarks/latent metadata/provenance in audio-video-image pipelines | Already complementary with C2PA/IPTC layer | Keep out-of-scope for this HTML text proposal |
 
-### Specification Delta Candidates (Tightened)
-
-| ID | Candidate | Draft text to add to explainer/spec | Scope | Recommendation |
-|----|-----------|-------------------------------------|-------|----------------|
-| SD-1 | **Compliance layering statement** | "The `ai-disclosure` attribute and `<meta name=\"ai-disclosure\">` provide machine-readable provenance signals. They do not, by themselves, define or guarantee legally sufficient user-facing disclosure in any jurisdiction." | Core explainer text | **Adopt now** |
-| SD-2 | **Optional notice-link attribute** | "A conforming extension MAY define `ai-notice-ref` (IDREF) to associate machine-readable disclosure with human-readable notice content in the same document." | Proposed extension point | **Adopt as candidate (non-normative for now)** |
-| SD-3 | **Publisher compliance profiles appendix** | Add implementation profiles for: `(a)` publication pages, `(b)` conversational interfaces, `(c)` mixed-content pages; each profile should map machine-readable markup to expected visible notice patterns. | Non-normative appendix | **Adopt now** |
-| SD-4 | **Runtime cadence semantics** | Potential fields for recurring notice intervals (for chat/ongoing interaction contexts). | Core vocabulary | **Defer (browser/app runtime concern)** |
-| SD-5 | **Human handoff semantics** | Potential fields for "contact human" escalation instructions. | Core vocabulary | **Defer (sector/app policy concern)** |
-
-### Draft Text Blocks (Ready To Paste)
-
-1. **Add under Detailed Design (new subsection: "Compliance Layering"):**
-
-   "The mechanisms in this proposal are machine-readable provenance signals.
-   They are designed to be composable with jurisdiction-specific user-facing
-   notice requirements, but they do not prescribe user interface treatment or
-   legal sufficiency of visible disclosures."
-
-2. **Add under Proposed Solution (optional extension note):**
-
-   "Future revisions may define an optional `ai-notice-ref` IDREF-style
-   attribute for linking an `ai-disclosure` assertion to human-readable notice
-   text in the same document. This extension is not required for baseline
-   interoperability."
-
-3. **Add non-normative appendix heading:**
-
-   "Appendix: Compliance Profiles (Informative)"
-
-   "This appendix provides implementation patterns that pair machine-readable
-   `ai-disclosure` metadata with visible notices for publication pages and
-   conversational interfaces, including mixed-content documents."
-
-### What To Leave to Browser / UA / Runtime
-
-1. **Rendering form factor.** Badge vs inline annotation vs tooltip vs reader-mode
-   marker should remain UA-specific.
-2. **Localization and accessibility phrasing.** Human-facing strings and verbosity
-   should remain UA/app policy.
-3. **Temporal cadence in active sessions.** Recurring notices (for example every
-   N hours) are runtime behavior, not static DOM semantics.
-4. **Human escalation workflows.** "Talk to a person" interaction design belongs
-   to application and sector compliance systems.
-
 ## Stakeholder Feedback
 
 | Engine | Status | Link |
