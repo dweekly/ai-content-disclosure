@@ -6,7 +6,9 @@
 
 ## Participate
 
-- [GitHub Issues](https://github.com/dweekly/ai-content-disclosure/issues)
+- [W3C AI Content Disclosure Community Group](https://www.w3.org/community/ai-content-disclosure/)
+  ([GitHub repo](https://github.com/w3c-cg/ai-content-disclosure/)) — the
+  canonical home for spec work, issues, and pull requests
 - [WICG Proposals Issue #261](https://github.com/WICG/proposals/issues/261)
 
 ## Table of Contents
@@ -392,13 +394,13 @@ structured data needs.
 
 ### "This is the evil bit — bad actors won't comply."
 
-This standard serves responsible publishers, regulated industries, and AI
-tool vendors who want to be transparent. It is not a detection mechanism.
-The EU AI Act makes compliance mandatory for covered entities, and major
-platforms already require disclosure in their terms of service.
+This is not a detection mechanism. It is a labeling mechanism for publishers,
+regulated industries, and AI tool vendors. The EU AI Act makes compliance
+mandatory for covered entities, and major platforms already require
+disclosure in their terms of service.
 
 The analogy is `rel=nofollow`: voluntary, widely adopted because it aligns
-incentives, and useful despite being ignorable by bad actors.
+incentives, and useful despite non-universal adoption.
 
 ### "Where do you draw the line with grammar checkers?"
 
@@ -408,10 +410,10 @@ outputs. Deterministic spell-check and thesaurus tools are excluded.
 
 ### "Metadata will be gamed like SEO dates."
 
-True for any self-declared metadata. The standard enables honest disclosure;
-verification requires pairing with C2PA or regulatory auditing. The value is
-in the signal for those who choose to use it honestly — same as Schema.org
-structured data, which search engines use despite its spoofability.
+True for any self-declared metadata. Verification requires pairing with
+C2PA or regulatory auditing. The signal is useful to consumers who encounter
+it — same as Schema.org structured data, which search engines use despite
+its spoofability.
 
 ### "This will stigmatize AI-assisted content."
 
@@ -428,8 +430,9 @@ modern content workflows and remains meaningful as AI tools become ubiquitous.
 
 ## Stakeholder Feedback
 
-| Engine | Status | Link |
-|--------|--------|------|
+| Stakeholder | Status | Link |
+|-------------|--------|------|
+| W3C Community Group | **Formed** (2026-02-03) | [w3.org/community/ai-content-disclosure](https://www.w3.org/community/ai-content-disclosure/) |
 | Chromium | Feature Entry Filed | [ChromeStatus](https://chromestatus.com/feature/5078123181899776) |
 | Gecko (Mozilla) | Position Requested | [mozilla/standards-positions#1344](https://github.com/mozilla/standards-positions/issues/1344) |
 | WebKit | Position Requested | [WebKit/standards-positions#605](https://github.com/WebKit/standards-positions/issues/605) |

@@ -22,6 +22,11 @@ Stack-ranked priorities for the AI Content Disclosure proposal.
   on `CreativeWork` as a comment on
   [schemaorg/schemaorg#3391](https://github.com/schemaorg/schemaorg/issues/3391).
 
+- ~~**Form W3C Community Group**~~ — Done:
+  [w3.org/community/ai-content-disclosure](https://www.w3.org/community/ai-content-disclosure/)
+  launched 2026-02-03. Spec work, issues, and PRs now live in
+  [w3c-cg/ai-content-disclosure](https://github.com/w3c-cg/ai-content-disclosure/).
+
 - **Connect with IPTC** — Verify vocabulary alignment with IPTC Digital
   Source Type maintainers. Ensure the mapping table is accurate and
   future-compatible.
