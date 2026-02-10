@@ -417,12 +417,11 @@ C2PA or regulatory auditing. The signal is useful to consumers who encounter
 it — same as Schema.org structured data, which search engines use despite
 its spoofability.
 
-### "This will stigmatize AI-assisted content."
+### "Different readers will react differently to AI disclosure."
 
-The granular levels (four values, not binary) allow publishers to distinguish
-"AI helped me edit" from "AI wrote everything." The `ai-assisted` level
-should carry no more stigma than acknowledging the use of a human copy
-editor.
+Yes, and that is expected. The purpose of this proposal is not to prescribe a
+single value judgment about AI use; it is to provide transparent,
+machine-readable authorship signals so readers can apply their own standards.
 
 ### "Everything will be AI-touched soon, making this meaningless."
 
