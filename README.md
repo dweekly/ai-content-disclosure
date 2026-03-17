@@ -86,7 +86,7 @@ is inadequate from both attribution and adoption perspectives:
   AI was used — such as specifying AI contributions, policy compliance, and
   human review — significantly increase authors' comfort with disclosure and
   reduce perceived stigma compared to simple binary acknowledgments
-  (Anon. 2026, FAccT '26, under review).
+  ([He, Akella, Do & Weisz 2026](#ref-13); FAccT '26).
 
 Together, these findings motivate the four-level spectrum (`none` through
 `autonomous`) and the optional metadata attributes proposed here.
@@ -408,7 +408,7 @@ structured data needs.
   attribute links to an external resource, giving authors control over what
   they disclose and when they revoke access. Research on disclosure comfort
   found that including prompt details *decreases* authors' comfort with
-  disclosure (Anon. 2026), validating the choice to make this attribute
+  disclosure ([He, Akella, Do & Weisz 2026](#ref-13)), validating the choice to make this attribute
   optional and indirect.
 - **The voluntary nature means it cannot be relied upon for security
   decisions**, the same as any self-declared metadata (robots.txt,
@@ -469,7 +469,7 @@ Empirical research supports this: a study of 162 AI-using workers found that
 granular disclosures describing *how* AI contributed (rather than simply
 acknowledging AI use) significantly increased authors' comfort with
 disclosure and reduced perceived stigma across multiple dimensions
-(Anon. 2026). In other words, the granularity this proposal enables is
+([He, Akella, Do & Weisz 2026](#ref-13)). In other words, the granularity this proposal enables is
 itself a stigma-reduction mechanism — binary disclosure creates a stigma
 problem that a spectrum approach helps solve.
 
@@ -509,4 +509,4 @@ four-level spectrum maps to how people already think about AI involvement.
 10. [EU Code of Practice on Transparency of AI-Generated Content (draft)](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content)
 11. [Bloomberg Container Timing Explainer](https://github.com/nicolo-ribaudo/container-timing) (structural model for this proposal)
 12. [Jessica He, Stephanie Houde, and Justin D. Weisz. 2025. Which Contributions Deserve Credit? Perceptions of Attribution in Human-AI Co-Creation. In CHI '25.](https://doi.org/10.1145/3706598.3713522)
-13. Anon. 2026. Overcoming Barriers to AI Disclosure: The Role of Granularity and Sociocultural Enablers in Reducing Perceived Stigmas. In FAccT '26 (under review).
+13. <span id="ref-13">Jessica He, Avinash Akella, Hyo Jin Do, and Justin D. Weisz. 2026. Overcoming Barriers to AI Disclosure: The Role of Granularity and Sociocultural Enablers in Reducing Perceived Stigmas. In FAccT '26.</span>

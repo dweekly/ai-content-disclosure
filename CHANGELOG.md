@@ -6,13 +6,13 @@
   - He, Houde & Weisz (CHI '25): attribution perceptions in human-AI
     co-creation — people naturally assign different credit levels by
     contribution type, amount, and initiative
-  - Anon. (FAccT '26, under review): granular disclosure reduces stigma
+  - He, Akella, Do & Weisz (FAccT '26): granular disclosure reduces stigma
     compared to binary acknowledgments
 - Strengthened FAQ responses on stigma and ubiquity with research evidence
 - Added research validation for optional `ai-prompt-url` (prompt disclosure
   decreases author comfort)
-- Added ROADMAP items for compact attribution notation (AIA format) and
-  IBM AI Attribution team engagement
+- Added ROADMAP items for compact attribution notation (AIA format),
+  AI Attribution researcher collaboration, and w3c-cg#11 linkage
 
 ## 0.1.0 — 2026-01-26
 

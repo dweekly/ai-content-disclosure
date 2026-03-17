@@ -63,11 +63,13 @@ Stack-ranked priorities for the AI Content Disclosure proposal.
   initiative, and human review status. Evaluate whether a similar notation
   could complement `ai-disclosure` attributes for richer attribution — e.g.,
   as a structured value for `ai-prompt-url` or a future `ai-attribution`
-  attribute. See their [AI Attribution toolkit](https://aiattribution.github.io).
+  attribute. See their [AI Attribution toolkit](https://aiattribution.github.io)
+  and [w3c-cg/ai-content-disclosure#11](https://github.com/w3c-cg/ai-content-disclosure/issues/11).
 
-- **Connect with IBM AI Attribution team** — The (now-former) IBM Research
-  team behind the CHI '25 attribution paper (Jessica He, Stephanie Houde,
-  Justin D. Weisz) has directly relevant empirical work on how people perceive
-  AI contribution credit. Their three-dimension framework (contribution type,
-  amount, initiative) validates our four-level taxonomy. Explore collaboration
-  or endorsement.
+- **Collaborate with AI Attribution researchers** — Justin Weisz (formerly
+  IBM Research), Jessica He (IBM Research), Hyo Jin Do (Gina), and Min Kyung
+  Lee (UT Austin) have expressed interest in contributing expertise to the
+  W3C specification. Their empirical work on attribution perceptions (CHI '25)
+  and disclosure barriers/stigma (FAccT '26) directly validates the four-level
+  taxonomy and granular disclosure approach. Engage them as CG participants
+  or invited experts.
