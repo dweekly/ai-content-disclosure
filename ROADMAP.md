@@ -18,13 +18,29 @@ Stack-ranked priorities for the AI Content Disclosure proposal.
 - ~~**Engage W3C AI & the Web Interest Group**~~ — Done: posted to
   `public-webai@w3.org` mailing list introducing the proposal.
 
+- ~~**Create W3C Community Group**~~ — Done:
+  [W3C AI Content Disclosure Community Group](https://www.w3.org/community/ai-content-disclosure/)
+  established. This is now the primary venue for discussion and participation.
+
 - ~~**File Schema.org proposal**~~ — Done: proposed `aiDisclosure` property
   on `CreativeWork` as a comment on
   [schemaorg/schemaorg#3391](https://github.com/schemaorg/schemaorg/issues/3391).
 
+- ~~**Connect with Doğu Abaris**~~ — Done: Reached out to the author of the
+  expired [IETF AI-Disclosure header draft](https://datatracker.ietf.org/doc/draft-abaris-aicdh/).
+  He is supportive of this proposal but cannot commit to sustained collaboration
+  right now. Open to light-touch help (reviewing, sanity-checking terminology).
+  The HTML proposal can proceed independently of reviving his IETF draft.
+
 - **Connect with IPTC** — Verify vocabulary alignment with IPTC Digital
   Source Type maintainers. Ensure the mapping table is accurate and
-  future-compatible.
+  future-compatible. Discuss whether they'd endorse an HTML binding and
+  understand their roadmap for text content (vs. images).
+
+- **Monitor Schema.org** — Watch [schemaorg/schemaorg#3391](https://github.com/schemaorg/schemaorg/issues/3391)
+  and [#3392](https://github.com/schemaorg/schemaorg/issues/3392) for direction
+  on `digitalSource` property adoption. Schema.org is aligning with IPTC
+  terminology.
 
 - **Connect with C2PA working group** — Discuss how HTML-level disclosure
   could be cryptographically bound to C2PA manifests for verified provenance.
@@ -40,3 +56,18 @@ Stack-ranked priorities for the AI Content Disclosure proposal.
 - **Engage regulatory stakeholders** — Position this standard as a technical
   mechanism for EU AI Act Article 50 compliance. Connect with the EU Code of
   Practice on AI-Generated Content working group.
+
+- **Explore compact attribution notation** — He, Houde & Weisz (CHI '25)
+  propose an "AIA" compact attribution statement format (modeled on Creative
+  Commons license chooser) that encodes model, contribution types, proportion,
+  initiative, and human review status. Evaluate whether a similar notation
+  could complement `ai-disclosure` attributes for richer attribution — e.g.,
+  as a structured value for `ai-prompt-url` or a future `ai-attribution`
+  attribute. See their [AI Attribution toolkit](https://aiattribution.github.io).
+
+- **Connect with IBM AI Attribution team** — The (now-former) IBM Research
+  team behind the CHI '25 attribution paper (Jessica He, Stephanie Houde,
+  Justin D. Weisz) has directly relevant empirical work on how people perceive
+  AI contribution credit. Their three-dimension framework (contribution type,
+  amount, initiative) validates our four-level taxonomy. Explore collaboration
+  or endorsement.

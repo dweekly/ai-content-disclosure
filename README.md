@@ -6,8 +6,15 @@
 
 ## Participate
 
+- [W3C AI Content Disclosure Community Group](https://www.w3.org/community/ai-content-disclosure/)
 - [GitHub Issues](https://github.com/dweekly/ai-content-disclosure/issues)
 - [WICG Proposals Issue #261](https://github.com/WICG/proposals/issues/261)
+
+## Browser Standards Positions
+
+- [Chromium](https://chromestatus.com/feature/5078123181899776)
+- [Mozilla/Gecko](https://github.com/mozilla/standards-positions/issues/1344)
+- [WebKit](https://github.com/WebKit/standards-positions/issues/605)
 
 ## Table of Contents
 
@@ -53,13 +60,36 @@ Existing approaches operate at coarser granularity:
   individual elements. Commenters on that issue (42+) identified element-level
   granularity as the critical missing capability.
 
-- **[IETF draft-abaris-aicdh-00](https://www.ietf.org/archive/id/draft-abaris-aicdh-00.html)**
-  defines an `AI-Disclosure` HTTP response header. It applies to entire
-  HTTP responses and cannot distinguish mixed content within a page.
+- **[IETF draft-abaris-aicdh](https://datatracker.ietf.org/doc/draft-abaris-aicdh/)**
+  (expired) defines an `AI-Disclosure` HTTP response header. It applies to
+  entire HTTP responses and cannot distinguish mixed content within a page.
+  The draft was discussed at IETF 123 dispatch and on the
+  [ai-control mailing list](https://mailarchive.ietf.org/arch/browse/ai-control/).
 
 - **[C2PA 2.2](https://spec.c2pa.org/)** provides cryptographic provenance
   for media files (images, video, audio). It does not support HTML text
   content and is designed for file-level, not element-level, assertions.
+
+### Empirical Evidence for Granularity
+
+Recent research confirms that binary AI disclosure ("AI was used / not used")
+is inadequate from both attribution and adoption perspectives:
+
+- A survey of 155 knowledge workers found that people assign meaningfully
+  different levels of authorship credit depending on the *type* of AI
+  contribution (form edits vs. content generation), the *amount* of AI
+  involvement, and whether the AI acted on its own *initiative* — validating
+  the need for a spectrum rather than a binary flag
+  ([He, Houde & Weisz 2025](https://doi.org/10.1145/3706598.3713522)).
+
+- A separate study (N=162) found that granular disclosures describing *how*
+  AI was used — such as specifying AI contributions, policy compliance, and
+  human review — significantly increase authors' comfort with disclosure and
+  reduce perceived stigma compared to simple binary acknowledgments
+  (Anon. 2026, FAccT '26, under review).
+
+Together, these findings motivate the four-level spectrum (`none` through
+`autonomous`) and the optional metadata attributes proposed here.
 
 ### Regulatory Context
 
@@ -77,7 +107,7 @@ compliance and voluntary transparency.
 2. Provide a **machine-readable signal** usable by browsers, search engines,
    accessibility tools, and research crawlers
 3. **Align with existing vocabularies** — specifically the
-   [IETF AI-Disclosure](https://www.ietf.org/archive/id/draft-abaris-aicdh-00.html)
+   [IETF AI-Disclosure](https://datatracker.ietf.org/doc/draft-abaris-aicdh/)
    header modes and
    [IPTC Digital Source Type](https://cv.iptc.org/newscodes/digitalsourcetype/)
    taxonomy — for cross-standard consistency
@@ -278,12 +308,24 @@ attributes. None supersedes the others.
 
 ### Vocabulary Alignment with IPTC
 
-| `ai-disclosure` value | IPTC Digital Source Type URI |
-|---------------------|----------------------------|
-| `none` | `http://cv.iptc.org/newscodes/digitalsourcetype/digitalCapture` |
-| `ai-assisted` | `http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia` |
-| `ai-generated` | `http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia` |
-| `autonomous` | `http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia` |
+The [IPTC Digital Source Type](https://cv.iptc.org/newscodes/digitalsourcetype/)
+vocabulary provides a comprehensive taxonomy for media provenance. Key mappings:
+
+| `ai-disclosure` value | IPTC Digital Source Type | IPTC URI |
+|---------------------|------------------------|----------|
+| `none` | `digitalCapture` | `http://cv.iptc.org/newscodes/digitalsourcetype/digitalCapture` |
+| `ai-assisted` | `compositeWithTrainedAlgorithmicMedia` | `http://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia` |
+| `ai-generated` | `trainedAlgorithmicMedia` | `http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia` |
+| `autonomous` | `trainedAlgorithmicMedia` | `http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia` |
+
+Notes on IPTC alignment:
+- IPTC does not distinguish between `ai-generated` (human-prompted) and
+  `autonomous` (no human oversight) — both map to `trainedAlgorithmicMedia`
+- For purely human-edited content, IPTC's `humanEdits` type is also applicable
+- IPTC's `algorithmicMedia` covers non-AI algorithmic content (deterministic
+  processing), which falls outside this proposal's scope
+- IPTC's `compositeSynthetic` ("composite with at least one AI element") could
+  serve as an alternative mapping for mixed-authorship content
 
 ## What Counts as AI?
 
@@ -324,7 +366,7 @@ not covered.
 Does not handle mixed-content pages — the single most requested feature in
 that issue's 42+ comments.
 
-### 2. HTTP Header Only ([IETF AI-Disclosure](https://www.ietf.org/archive/id/draft-abaris-aicdh-00.html))
+### 2. HTTP Header Only ([IETF AI-Disclosure](https://datatracker.ietf.org/doc/draft-abaris-aicdh/))
 
 No element-level granularity. Not accessible to client-side tools processing
 the DOM. Cannot distinguish mixed content within a page.
@@ -364,7 +406,10 @@ structured data needs.
   trade secrets or proprietary tooling.
 - **Prompt text is not embedded in HTML.** The optional `ai-prompt-url`
   attribute links to an external resource, giving authors control over what
-  they disclose and when they revoke access.
+  they disclose and when they revoke access. Research on disclosure comfort
+  found that including prompt details *decreases* authors' comfort with
+  disclosure (Anon. 2026), validating the choice to make this attribute
+  optional and indirect.
 - **The voluntary nature means it cannot be relied upon for security
   decisions**, the same as any self-declared metadata (robots.txt,
   `rel=nofollow`, Schema.org markup).
@@ -420,11 +465,27 @@ The granular levels (four values, not binary) allow publishers to distinguish
 should carry no more stigma than acknowledging the use of a human copy
 editor.
 
+Empirical research supports this: a study of 162 AI-using workers found that
+granular disclosures describing *how* AI contributed (rather than simply
+acknowledging AI use) significantly increased authors' comfort with
+disclosure and reduced perceived stigma across multiple dimensions
+(Anon. 2026). In other words, the granularity this proposal enables is
+itself a stigma-reduction mechanism — binary disclosure creates a stigma
+problem that a spectrum approach helps solve.
+
 ### "Everything will be AI-touched soon, making this meaningless."
 
 That is exactly why granularity matters. Binary "AI/not-AI" is already
 inadequate. The spectrum from `none` to `autonomous` reflects the reality of
 modern content workflows and remains meaningful as AI tools become ubiquitous.
+
+Research on attribution perceptions confirms this: knowledge workers
+naturally distinguish between different kinds of AI contribution and assign
+different levels of credit accordingly — form edits (spelling, grammar)
+warrant minimal attribution, while content contributions (new ideas,
+complete text) warrant significantly more
+([He, Houde & Weisz 2025](https://doi.org/10.1145/3706598.3713522)). The
+four-level spectrum maps to how people already think about AI involvement.
 
 ## Stakeholder Feedback
 
@@ -437,7 +498,7 @@ modern content workflows and remains meaningful as AI tools become ubiquitous.
 ## References
 
 1. [WHATWG HTML #9479: Proposal: Meta Tag for AI Generated Content](https://github.com/whatwg/html/issues/9479)
-2. [IETF draft-abaris-aicdh-00: AI Content Disclosure Header](https://www.ietf.org/archive/id/draft-abaris-aicdh-00.html)
+2. [IETF draft-abaris-aicdh: AI Content Disclosure Header](https://datatracker.ietf.org/doc/draft-abaris-aicdh/) (expired)
 3. [WICG #104: Content Provenance and Authenticity](https://github.com/WICG/proposals/issues/104)
 4. [WICG #141: Advancing Web Metadata](https://github.com/WICG/proposals/issues/141)
 5. [W3C: AI & the Web — Understanding and managing the impact of Machine Learning models on the Web](https://www.w3.org/reports/ai-web-impact/)
@@ -447,3 +508,5 @@ modern content workflows and remains meaningful as AI tools become ubiquitous.
 9. [EU AI Act — Regulation (EU) 2024/1689, Article 50](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
 10. [EU Code of Practice on Transparency of AI-Generated Content (draft)](https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content)
 11. [Bloomberg Container Timing Explainer](https://github.com/nicolo-ribaudo/container-timing) (structural model for this proposal)
+12. [Jessica He, Stephanie Houde, and Justin D. Weisz. 2025. Which Contributions Deserve Credit? Perceptions of Attribution in Human-AI Co-Creation. In CHI '25.](https://doi.org/10.1145/3706598.3713522)
+13. Anon. 2026. Overcoming Barriers to AI Disclosure: The Role of Granularity and Sociocultural Enablers in Reducing Perceived Stigmas. In FAccT '26 (under review).
