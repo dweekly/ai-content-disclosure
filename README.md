@@ -257,6 +257,46 @@ A literary journal positively asserts that no AI was used:
 Note: `ai-disclosure="none"` is a positive assertion. The *absence* of the
 attribute means "unknown," not "none."
 
+### Scenario 5: AI-Generated Multi-Element Section (Inheritance)
+
+An earnings report contains a human-written introduction followed by an
+AI-generated analysis spanning multiple sibling element types. A single
+`ai-disclosure` on the containing `<section>` inherits to all children —
+no need to annotate each element individually:
+
+```html
+<meta name="ai-disclosure" content="mixed">
+<!-- ... -->
+<p ai-disclosure="none">Written by our financial editor, Jane Smith.</p>
+
+<section ai-disclosure="ai-generated" ai-model="claude-3.5-sonnet"
+         ai-provider="Anthropic">
+  <h2>Executive Summary</h2>
+  <p>Revenue increased 14% year-over-year, driven primarily by
+  cloud services...</p>
+  <ul>
+    <li>Cloud revenue: $4.2B (+22%)</li>
+    <li>Hardware revenue: $1.1B (-3%)</li>
+  </ul>
+  <figure>
+    <img src="chart.png" alt="Revenue breakdown chart">
+    <figcaption>AI-generated forecast visualization</figcaption>
+  </figure>
+</section>
+```
+
+This also applies to void element groups. An AI-generated responsive image
+set needs only one annotation on the `<picture>` container:
+
+```html
+<picture ai-disclosure="ai-generated" ai-model="dall-e-3"
+         ai-provider="OpenAI">
+  <source srcset="hero-800.webp" media="(max-width: 800px)">
+  <source srcset="hero-1600.webp" media="(min-width: 801px)">
+  <img src="hero-fallback.jpg" alt="AI-generated hero image">
+</picture>
+```
+
 ## Detailed Design
 
 ### Inheritance
@@ -353,6 +393,55 @@ Too verbose for common cases. RDFa requires namespace declarations and
 multi-attribute markup for simple assertions. The `ai-disclosure` attribute
 provides a lightweight default; RDFa or JSON-LD can supplement it for richer
 structured data needs.
+
+### 6. Dedicated HTML Element (e.g., `<genai>`)
+
+A dedicated wrapper element for AI-generated content has been proposed
+([WICG #273](https://github.com/WICG/proposals/issues/273)) as an
+alternative to a global attribute. The argument is that a named element
+(analogous to `<article>` or `<nav>`) creates a cleaner DOM boundary for
+multi-element AI-generated regions and is more naturally queryable.
+
+This approach has real appeal for the wrapping use case, but we believe an
+attribute is the better fit for several reasons:
+
+- **AI provenance is a property, not a structural category.** HTML
+  precedent uses attributes for content properties: `lang` for language,
+  `translate` for translatability, `contenteditable` for editability,
+  `hidden` for visibility. A new element is appropriate when content has
+  distinct *structural* semantics (navigation, article, figure) — but
+  "produced by AI" describes *how* content was made, not *what* it is
+  structurally.
+- **No disclosure spectrum.** A wrapper element is inherently binary
+  (wrapped or not). The attribute approach supports four values —
+  `none`, `ai-assisted`, `ai-generated`, `autonomous` — aligned with the
+  IETF header and IPTC vocabulary. A `human-edited` boolean attribute on
+  a wrapper element does not capture the meaningful difference between
+  light AI editing and fully autonomous generation.
+- **No positive human-only assertion.** There is no element-based way to
+  express `ai-disclosure="none"` — the affirmative claim that content was
+  produced without AI. Absence of a wrapper means "unknown," leaving no
+  mechanism for journals, legal filings, or editorial standards that
+  require a positive human-authorship declaration.
+- **Inheritance already solves the sibling-wrapping case.** The
+  `ai-disclosure` attribute inherits to descendants (see
+  [Scenario 5](#scenario-5-ai-generated-multi-element-section-inheritance)).
+  Placing it on a `<section>`, `<div>`, or `<picture>` covers all
+  children — including void elements — with a single annotation.
+- **Standardization cost.** Adding a new HTML element requires WHATWG spec
+  changes and parser updates in every browser engine. A global attribute
+  follows a well-established, lighter-weight path.
+- **Naming durability.** Element names are permanent. An element name tied
+  to current-era terminology ("genai") risks aging poorly. Attribute
+  values can be extended over time without renaming.
+
+**Queryability note:** One genuine advantage of a dedicated element is that
+`querySelectorAll('genai')` returns coherent provenance regions, while
+`querySelectorAll('[ai-disclosure]')` finds only directly annotated
+elements, not those inheriting a value. Future browser integration — such
+as a CSS pseudo-class (e.g., `:ai-disclosure()`) or Accessibility Object
+Model exposure — could close this gap for the attribute approach without
+requiring a new element.
 
 ## Privacy and Security Considerations
 
@@ -502,3 +591,4 @@ HTML content, or conversational web interactions. This is not legal advice.*
 22. [California AB853 (2025-2026) — amendments to California AI Transparency Act](https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260AB853)
 23. [Colorado SB24-205 — consumer protections in interactions with AI systems](https://leg.colorado.gov/bills/sb24-205)
 24. [Colorado SB25B-004 — effective date changes tied to SB24-205 implementation](https://leg.colorado.gov/bills/sb25b-004)
+25. [WICG #273: Proposal for `<genai>` HTML element](https://github.com/WICG/proposals/issues/273) (element-based alternative; see [Alternative 6](#6-dedicated-html-element-eg-genai))
